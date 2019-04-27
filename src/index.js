@@ -18,7 +18,7 @@ const authLink = setContext((_request, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: `Bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`
+      authorization: `Bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`
     }
   }
 })
