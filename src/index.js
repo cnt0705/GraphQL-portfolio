@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import 'reset-css'
 import App from './App'
-// import * as serviceWorker from './serviceWorker'
 
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
@@ -11,7 +10,7 @@ import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const httpLink = createHttpLink({
-  uri: 'https://api.github.com/graphql'
+  uri: process.env.REACT_APP_GITHUB_API_ENDPOINT
 })
 
 const authLink = setContext((_request, { headers }) => {
@@ -34,5 +33,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 )
-
-// serviceWorker.unregister()

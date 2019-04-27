@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from './components/Header.js'
+import Relations from './components/Relations.js'
 import './App.css'
 
 import gql from 'graphql-tag'
@@ -15,6 +17,7 @@ const query = gql`
       avatarUrl(size: 280)
       repositories(first: 5) {
         nodes {
+          id
           name
           url
           defaultBranchRef {
@@ -22,6 +25,7 @@ const query = gql`
               ... on Commit {
                 history(first: 3) {
                   nodes {
+                    id
                     message
                     pushedDate
                   }
@@ -33,17 +37,22 @@ const query = gql`
       }
       starredRepositories(first: 5) {
         nodes {
+          id
           name
           url
         }
       }
       following(first: 3) {
         nodes {
+          id
           name
+          avatarUrl
+          url
         }
       }
       followers(first: 3) {
         nodes {
+          id
           name
           avatarUrl
           url
@@ -58,10 +67,65 @@ const App = () => (
     {({ loading, _error, data }) => {
       if (loading) return <p>Loading...</p>
 
-      console.log(data)
+      const user = data.viewer
+      const repos = user.repositories.nodes
+      const starredRepos = user.starredRepositories.nodes
+      const following = user.following.nodes
+      const followers = user.followers.nodes
 
       return (
-        <p>Done</p>
+        <div>
+          <Header user={user}></Header>
+          <main>
+            <section>
+              <h2>Repositories</h2>
+              {repos.map(repo => {
+                return (
+                  <section key={repo.id}>
+                    <h3>
+                      <a href={repo.url} target="_blank">
+                        {repo.name}
+                      </a>
+                    </h3>
+                    <ul>
+                      {repo.defaultBranchRef.target.history.nodes.map(commit => {
+                        return (
+                          <li key={commit.id}>
+                            {commit.message}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </section>
+                )
+              })}
+            </section>
+            <section>
+              <h2>Starred Repositories</h2>
+              <ul>
+                {starredRepos.map(repo => {
+                  return (
+                    <li key={repo.id}>
+                      <a href={repo.url} target="_blank">
+                        {repo.name}
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </section>
+            <div>
+              <section>
+                <h2>Following</h2>
+                <Relations users={following}></Relations>
+              </section>
+              <section>
+                <h2>Followers</h2>
+                <Relations users={followers}></Relations>
+              </section>
+            </div>
+          </main>
+        </div>
       )
     }}
   </Query>
