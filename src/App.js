@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from './components/Header.js'
 import PageHeading from './components/PageHeading.js'
-import Repository from './components/Repository.js'
+import Repositories from './components/Repositories.js'
+import StarredRepositories from './components/StarredRepositories.js'
 import Relations from './components/Relations.js'
 import './assets/css/App.css'
 
@@ -44,7 +45,7 @@ const query = gql`
           url
         }
       }
-      following(first: 3) {
+      following(first: 5) {
         nodes {
           id
           name
@@ -52,7 +53,7 @@ const query = gql`
           url
         }
       }
-      followers(first: 3) {
+      followers(first: 5) {
         nodes {
           id
           name
@@ -81,32 +82,18 @@ const App = () => (
           <main className='page-main-content'>
             <section className='page-section'>
               <PageHeading text='Repositories' className='page-section-heading'/>
-              {repos.map(repo => {
-                return (
-                  <Repository key={repo.id} repository={repo}/>
-                )
-              })}
+              <Repositories repositories={repos}/>
             </section>
             <section className='page-section'>
               <PageHeading text='Starred Repositories' className='page-section-heading'/>
-              <ul>
-                {starredRepos.map(repo => {
-                  return (
-                    <li key={repo.id}>
-                      <a href={repo.url} target="_blank">
-                        {repo.name}
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
+              <StarredRepositories repositories={starredRepos}/>
             </section>
-            <div>
-              <section>
+            <div className='page-2cols'>
+              <section className='page-2cols-section'>
                 <PageHeading text='Following' className='page-section-heading'/>
                 <Relations users={following}></Relations>
               </section>
-              <section>
+              <section className='page-2cols-section'>
                 <PageHeading text='Followers' className='page-section-heading'/>
                 <Relations users={followers}></Relations>
               </section>

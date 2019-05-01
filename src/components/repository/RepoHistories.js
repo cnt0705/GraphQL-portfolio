@@ -3,25 +3,22 @@ import styled from 'styled-components'
 
 import { formatDate } from '../../lib/day'
 
-const LIST = styled.ul`
-`
-
-const ITEM = styled.li`
+const LI = styled.li`
   &:not(:last-child) {
     margin: 0 0 10px 0;
   }
 `
 
 const RepoHistories = props => (
-  <LIST className={props.className}>
+  <ul className={props.className}>
     {props.histories.map(commit => {
       return (
-        <ITEM key={commit.id}>
+        <LI key={commit.id}>
           {formatDate(commit.pushedDate)} / {commit.message}
-        </ITEM>
+        </LI>
       )
     })}
-  </LIST>
+  </ul>
 )
 
 export default RepoHistories

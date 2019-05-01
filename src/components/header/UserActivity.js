@@ -6,7 +6,19 @@ const P = styled.p`
   justify-content: space-between;
 `
 
-const Title = styled.span`
+const TITLE = styled.span`
+  position: relative;
+  flex: 1;
+
+  &:after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 80%;
+    height: 1px;
+    background-color: #ccc;
+    content: '';
+  }
 `
 
 const Date = styled.span`
@@ -15,7 +27,7 @@ const Date = styled.span`
 
 const UserActivity = props => (
   <P className={props.className}>
-    <Title>{props.title}</Title>
+    <TITLE>{props.title}</TITLE>
     <Date>{props.date}</Date>
   </P>
 )

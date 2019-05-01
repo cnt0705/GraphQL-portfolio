@@ -10,7 +10,7 @@ const Link = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: #222;
+    color: #c71ad0;
   }
 `
 

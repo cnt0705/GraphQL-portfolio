@@ -1,20 +1,47 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const UL = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const LI = styled.li`
+  width: calc((100% - 20px * 3) / 4);
+  margin: 0 0 20px;
+
+  &:not(:nth-child(4n)) {
+    margin-right: 20px;
+  }
+`
+
+const LINK = styled.a`
+  display: block;
+
+  &:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  }
+`
+
+const IMG = styled.img`
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+`
 
 function Relations(props) {
-  const users = props.users
-
   return (
-    <ul>
-      {users.map(user => {
+    <UL>
+      {props.users.map(user => {
         return (
-          <li key={user.id}>
-            <a href={user.url} target="_blank">
-              <img src={user.avatarUrl} alt={user.name}/>
-            </a>
-          </li>
+          <LI key={user.id}>
+            <LINK href={user.url} target="_blank">
+              <IMG src={user.avatarUrl} alt={user.name}/>
+            </LINK>
+          </LI>
         )
       })}
-    </ul>
+    </UL>
   )
 }
 
