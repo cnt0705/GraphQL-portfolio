@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #444;
+}
+
+a {
+  color: #444;
+}
+
+.page-main-content {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.page-section:not(:last-child) {
+  margin: 0 0 80px 0;
+}

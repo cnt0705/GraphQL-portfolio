@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from './components/Header.js'
+import PageHeading from './components/PageHeading.js'
 import Relations from './components/Relations.js'
-import './App.css'
+import './assets/css/App.css'
 
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
@@ -14,7 +15,7 @@ const query = gql`
       bio
       createdAt
       updatedAt
-      avatarUrl(size: 280)
+      avatarUrl
       repositories(first: 5) {
         nodes {
           id
@@ -76,9 +77,9 @@ const App = () => (
       return (
         <div>
           <Header user={user}></Header>
-          <main>
-            <section>
-              <h2>Repositories</h2>
+          <main className='page-main-content'>
+            <section className='page-section'>
+              <PageHeading text='Repositories'/>
               {repos.map(repo => {
                 return (
                   <section key={repo.id}>
@@ -100,8 +101,8 @@ const App = () => (
                 )
               })}
             </section>
-            <section>
-              <h2>Starred Repositories</h2>
+            <section className='page-section'>
+              <PageHeading text='Starred Repositories'/>
               <ul>
                 {starredRepos.map(repo => {
                   return (
@@ -116,11 +117,11 @@ const App = () => (
             </section>
             <div>
               <section>
-                <h2>Following</h2>
+                <PageHeading text='Following'/>
                 <Relations users={following}></Relations>
               </section>
               <section>
-                <h2>Followers</h2>
+                <PageHeading text='Followers'/>
                 <Relations users={followers}></Relations>
               </section>
             </div>
