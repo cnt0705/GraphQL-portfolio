@@ -9,8 +9,8 @@ const Repositories = props => (
     {props.repositories.map(repo => {
       return (
         <section key={repo.id} className='repository-item'>
-          <RepoName name={repo.name} url={repo.url} className='repository-item-name'/>
-          <RepoHistories histories={repo.defaultBranchRef.target.history.nodes}/>
+          <RepoName name={repo.name} url={repo.url} className='repository-item-name' />
+          <RepoHistories histories={repo.defaultBranchRef.target.history.nodes} />
         </section>
       )
     })}

@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const P = styled.p`
+const Line = styled.p`
   display: flex;
   justify-content: space-between;
 `
 
-const TITLE = styled.span`
+const Title = styled.span`
   position: relative;
   flex: 1;
 
@@ -26,10 +26,10 @@ const Date = styled.span`
 `
 
 const UserActivity = props => (
-  <P className={props.className}>
-    <TITLE>{props.title}</TITLE>
+  <Line className={props.className}>
+    <Title>{props.title}</Title>
     <Date>{props.date}</Date>
-  </P>
+  </Line>
 )
 
 export default UserActivity

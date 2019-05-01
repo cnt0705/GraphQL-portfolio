@@ -14,12 +14,12 @@ function Header(props) {
   return (
     <header className='header-profile'>
       <div className='header-profile-inner'>
-        <UserName name={user.name} link={user.url} className='header-profile-name'/>
-        <UserAvatar url={user.avatarUrl} alt={user.name} className='header-profile-avator'/>
+        <UserName name={user.name} link={user.url} className='header-profile-name' />
+        <UserAvatar url={user.avatarUrl} alt={user.name} className='header-profile-avator' />
         <div className='header-profile-container'>
-          <UserBio text={user.bio} className='header-profile-bio'/>
-          <UserActivity title='Created' date={formatDate(user.createdAt)} className='header-profile-activity'/>
-          <UserActivity title='Updated' date={formatDate(user.updatedAt)} className='header-profile-activity'/>
+          <UserBio text={user.bio} className='header-profile-bio' />
+          <UserActivity title='Created' date={formatDate(user.createdAt)} className='header-profile-activity' />
+          <UserActivity title='Updated' date={formatDate(user.updatedAt)} className='header-profile-activity' />
         </div>
       </div>
     </header>

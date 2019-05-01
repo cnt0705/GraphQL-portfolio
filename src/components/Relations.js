@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const UL = styled.ul`
+const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
 `
 
-const LI = styled.li`
+const Item = styled.li`
   width: calc((100% - 20px * 3) / 4);
   margin: 0 0 20px;
 
@@ -15,7 +15,7 @@ const LI = styled.li`
   }
 `
 
-const LINK = styled.a`
+const Link = styled.a`
   display: block;
 
   &:hover {
@@ -23,7 +23,7 @@ const LINK = styled.a`
   }
 `
 
-const IMG = styled.img`
+const Img = styled.img`
   width: 100%;
   height: auto;
   vertical-align: top;
@@ -31,17 +31,17 @@ const IMG = styled.img`
 
 function Relations(props) {
   return (
-    <UL>
+    <List>
       {props.users.map(user => {
         return (
-          <LI key={user.id}>
-            <LINK href={user.url} target="_blank">
-              <IMG src={user.avatarUrl} alt={user.name}/>
-            </LINK>
-          </LI>
+          <Item key={user.id}>
+            <Link href={user.url} target="_blank" rel="noopener noreferrer">
+              <Img src={user.avatarUrl} alt={user.name} />
+            </Link>
+          </Item>
         )
       })}
-    </UL>
+    </List>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import Loading from './Loading.js'
 import Header from './components/Header.js'
 import PageHeading from './components/PageHeading.js'
 import Repositories from './components/Repositories.js'
@@ -68,7 +69,7 @@ const query = gql`
 const App = () => (
   <Query query={query}>
     {({ loading, _error, data }) => {
-      if (loading) return <p>Loading...</p>
+      if (loading) return <Loading />
 
       const user = data.viewer
       const repos = user.repositories.nodes
@@ -78,23 +79,23 @@ const App = () => (
 
       return (
         <div>
-          <Header user={user}/>
+          <Header user={user} />
           <main className='page-main-content'>
             <section className='page-section'>
-              <PageHeading text='Repositories' className='page-section-heading'/>
-              <Repositories repositories={repos}/>
+              <PageHeading text='Repositories' className='page-section-heading' />
+              <Repositories repositories={repos} />
             </section>
             <section className='page-section'>
-              <PageHeading text='Starred Repositories' className='page-section-heading'/>
-              <StarredRepositories repositories={starredRepos}/>
+              <PageHeading text='Starred Repositories' className='page-section-heading' />
+              <StarredRepositories repositories={starredRepos} />
             </section>
             <div className='page-2cols'>
               <section className='page-2cols-section'>
-                <PageHeading text='Following' className='page-section-heading'/>
+                <PageHeading text='Following' className='page-section-heading' />
                 <Relations users={following}></Relations>
               </section>
               <section className='page-2cols-section'>
-                <PageHeading text='Followers' className='page-section-heading'/>
+                <PageHeading text='Followers' className='page-section-heading' />
                 <Relations users={followers}></Relations>
               </section>
             </div>

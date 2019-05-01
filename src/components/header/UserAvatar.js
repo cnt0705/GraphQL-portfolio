@@ -7,7 +7,7 @@ const Img = styled.img`
 `
 
 const UserAvatar = props => (
-  <Img src={props.url} alt={props.alt} className={props.className}/>
+  <Img src={props.url} alt={props.alt} className={props.className} />
 )
 
 export default UserAvatar
