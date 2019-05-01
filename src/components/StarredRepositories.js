@@ -13,14 +13,21 @@ const Item = styled.li`
   font-size: 1.2rem;
 `
 
+const Link = styled.a`
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
 const StarredRepository = props => (
   <List className={props.className}>
     {props.repositories.map(repo => {
       return (
         <Item key={repo.id}>
-          <a href={repo.url} target="_blank" rel="noopener noreferrer">
+          <Link href={repo.url} target="_blank" rel="noopener noreferrer">
             {repo.name}
-          </a>
+          </Link>
         </Item>
       )
     })}

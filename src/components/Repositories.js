@@ -10,7 +10,7 @@ const Repositories = props => (
       return (
         <section key={repo.id} className='repository-item'>
           <RepoName name={repo.name} url={repo.url} className='repository-item-name' />
-          <RepoHistories histories={repo.defaultBranchRef.target.history.nodes} />
+          <RepoHistories histories={repo.defaultBranchRef.target.history.nodes} className='repository-histories' />
         </section>
       )
     })}

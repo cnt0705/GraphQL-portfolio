@@ -12,3 +12,7 @@
   width: 320px;
   margin: 0 20px 0 0;
 }
+
+.repository-histories {
+  flex: 1;
+}
