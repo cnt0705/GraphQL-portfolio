@@ -10,6 +10,7 @@ const Title = styled.span`
 `
 
 const Date = styled.span`
+  font-size: .9rem;
 `
 
 const UserActivity = props => (

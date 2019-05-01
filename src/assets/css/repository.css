@@ -1,0 +1,14 @@
+.repository-item {
+  display: flex;
+  padding: 0 0 30px;
+  border-bottom: #eee 1px solid;
+}
+
+.repository-item:not(:last-child) {
+  margin: 0 0 30px;
+}
+
+.repository-item-name {
+  width: 320px;
+  margin: 0 20px 0 0;
+}

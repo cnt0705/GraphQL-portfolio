@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './components/Header.js'
 import PageHeading from './components/PageHeading.js'
+import Repository from './components/Repository.js'
 import Relations from './components/Relations.js'
 import './assets/css/App.css'
 
@@ -76,33 +77,18 @@ const App = () => (
 
       return (
         <div>
-          <Header user={user}></Header>
+          <Header user={user}/>
           <main className='page-main-content'>
             <section className='page-section'>
-              <PageHeading text='Repositories'/>
+              <PageHeading text='Repositories' className='page-section-heading'/>
               {repos.map(repo => {
                 return (
-                  <section key={repo.id}>
-                    <h3>
-                      <a href={repo.url} target="_blank">
-                        {repo.name}
-                      </a>
-                    </h3>
-                    <ul>
-                      {repo.defaultBranchRef.target.history.nodes.map(commit => {
-                        return (
-                          <li key={commit.id}>
-                            {commit.message}
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </section>
+                  <Repository key={repo.id} repository={repo}/>
                 )
               })}
             </section>
             <section className='page-section'>
-              <PageHeading text='Starred Repositories'/>
+              <PageHeading text='Starred Repositories' className='page-section-heading'/>
               <ul>
                 {starredRepos.map(repo => {
                   return (
@@ -117,11 +103,11 @@ const App = () => (
             </section>
             <div>
               <section>
-                <PageHeading text='Following'/>
+                <PageHeading text='Following' className='page-section-heading'/>
                 <Relations users={following}></Relations>
               </section>
               <section>
-                <PageHeading text='Followers'/>
+                <PageHeading text='Followers' className='page-section-heading'/>
                 <Relations users={followers}></Relations>
               </section>
             </div>
